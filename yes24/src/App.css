@@ -1,0 +1,20 @@
+* {
+  list-style:none;
+}
+
+ul {
+  display:flex;
+  text-align: center;
+}
+
+li {
+  width: 160px;
+  padding: 1em 0;
+  border:1px solid black;
+  cursor: pointer;
+}
+
+li:hover {
+  background-color: #ddd;
+  font-weight: 600;
+}
