@@ -5,8 +5,8 @@ export default function Profile({image, name, title, isNew}) { // 리액트에�
   return (
     <div className="profile">
       <Avata image = {image} isNew = {isNew} />
-      <h1>{name}</h1>
-      <p>{title}</p>
+      <h1>James Kim{name}</h1>
+      <p>프론트엔드 개발자{title}</p>
     </div>
   );
 }

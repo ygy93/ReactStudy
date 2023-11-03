@@ -61,9 +61,20 @@ h1 {
   border:1px solid lightgray;
   border-radius: 0.3rem;
 }
+.total {
+  font-size: 1.3rem;
+}
 
 
-
+.container {
+  width: 500px;
+  margin: auto;
+}
+.banner {
+  background-color: orange;
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
 
 
 

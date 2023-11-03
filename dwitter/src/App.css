@@ -1,0 +1,35 @@
+.Dweets {
+  width: 95%;
+  height: 150px;
+  margin:auto;
+  display:flex;
+  flex-wrap: nowrap;
+  margin-bottom: 20px;
+  border:1px solid #000;
+  box-sizing: border-box;
+}
+
+.image, .img {
+  width: 150px;
+  height: 150px;
+  background-color: navy;
+}
+.img {
+  border-radius: 100%;
+}
+
+.title {
+  width: calc(100% - 150px);
+}
+
+.profile {
+  
+}
+
+.updet {
+
+}
+
+.content {
+  
+}

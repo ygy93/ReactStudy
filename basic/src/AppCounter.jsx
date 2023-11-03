@@ -7,15 +7,16 @@ import { useState } from 'react';
 
 function App() { // 리턴 시 반드시 하나의 태그만 출력한다
   // div 태그나 <> </> 빈 태그를 넣어도 상관없음
-  const [totalCount, setTotalCount] = useState(0);
+  const [totalCount, setTotalCount] = useState(0); // const [실행되는 값, 적용되는 이벤트 메소드] , useState(초기값)
   const handleClick = (event) => setTotalCount((count) => count + 1)
 
   return (
     <>
       <div className="container">
         <div className="banner">Total : {totalCount}</div>
-        <Counter onClick={handleClick}/> {/* 클릭이벤트가 발생하면 totalCount 구한다 */}
-        <Counter onClick={handleClick}/>
+        <Counter onClick={handleClick} totalCount={totalCount}/> {/* 클릭이벤트가 발생하면 totalCount 구한다 */}
+        <Counter onClick={handleClick} totalCount={totalCount}/>
+        <Counter onClick={handleClick} totalCount={totalCount}/>
       </div>
     </>
   );

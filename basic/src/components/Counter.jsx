@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-export default function Counter({onClick}) {
+export default function Counter({onClick, totalCount}) {
   const [count, setCount] = useState(0); // const [실행되는 값, 적용되는 이벤트 메소드] , useState(초기값)
 
   /* const increment = (event) => {
@@ -14,7 +14,7 @@ export default function Counter({onClick}) {
 
   return(
     <div className="Counter">
-      <span className="number">{count}</span>
+      <span className="number">{count} / <span className="total">{totalCount}</span></span>
       <button className="numBtn" onClick={() => { // {increment}
         setCount(count + 1);
         onClick();
