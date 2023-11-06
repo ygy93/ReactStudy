@@ -1,8 +1,8 @@
 import './App.css';
-import Profile from './components/Profile';
-import Avata from './components/Avata';
+import Profile from '../components/Profile';
+import Avata from '../components/Avata';
 import React from 'react';
-import Counter from './components/Counter';
+import Counter from '../components/Counter';
 import { useState } from 'react';
 
 function App() { // 리턴 시 반드시 하나의 태그만 출력한다

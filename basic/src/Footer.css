@@ -1,0 +1,33 @@
+footer {
+  font-size: 0.9rem;
+}
+
+li {
+  list-style: none;
+}
+
+.FooterMenu {
+  width: 1400px;
+  justify-content:space-between;
+  display:flex;
+}
+
+.Menu {
+  margin:0 auto;
+  display:flex;
+  background-color: #ddd;
+  color:#666;
+}
+
+.Menu li {
+  padding: 10px 30px;
+  text-align: center;
+  border:1px solid #000;
+}
+
+.siteweb {
+  width: 300px;
+  height: 30px;
+  padding: 6px 10px;
+  line-height: 30px;
+}

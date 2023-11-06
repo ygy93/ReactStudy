@@ -1,6 +1,6 @@
 import './App.css';
-import Profile from './components/Profile';
-import Avata from './components/Avata';
+import Profile from '../components/Profile';
+import Avata from '../components/Avata';
 
 function App() { // 리턴 시 반드시 하나의 태그만 출력한다
   // div 태그나 <> </> 빈 태그를 넣어도 상관없음

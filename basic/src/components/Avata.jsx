@@ -1,3 +1,5 @@
+
+
 export default function Avata({image, isNew}){
   return(
     <div className="Avata">

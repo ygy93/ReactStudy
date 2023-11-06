@@ -1,0 +1,19 @@
+section {
+  background-color: orange;
+}
+
+.SectionList {
+  width: 80%;
+  margin:0 auto;
+  position: relative;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .view {
+    margin-top: 10px;
+    width: 500px;
+    text-align: center;
+  }
+}
+
