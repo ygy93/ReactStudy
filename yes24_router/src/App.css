@@ -1,12 +1,7 @@
-img {
-  width: 100%;
-}
-
-
 .navbar {
   background-color: navy;
   padding: 10px;
-  text-align: right;
+  text-align: center;
 }
 .menu {
   padding: 0 10px;
