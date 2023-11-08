@@ -9,3 +9,103 @@
   background-color: orange;
   color:white;
 }
+
+
+ul {
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+
+
+/* BookList */
+.booklist{
+  position: relative;
+  display:flex;
+  width: 1300px;
+  margin:auto;
+  border-bottom:1px solid lightgray;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* BookAvata */
+.BookAvata {
+  display:flex;
+  align-items: center;
+}
+.booknumber {
+  padding: 0 20px;
+  align-items: center;
+}
+.bookcontent{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookimg {
+  width: 200px;
+}
+.bookBtn {
+  padding: 6px 30px;
+  margin-top: 1rem;
+  background-color: #fff;
+  border:1px solid lightgray;
+  border-radius:6px;
+}
+
+/* BookContents */
+.BookContents {
+  display:flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+/* BookBuy */
+.BookBuy {
+  display:flex;
+  flex-direction: column;
+  position: absolute;
+  right:0;
+}
+.BookBuy button {
+  width: 100%;
+  padding: 5px 10px;
+  border-radius: 0.3rem;
+  margin:2px 0;
+}
+.button_cart {
+  background-color: rgb(25,106,179);
+  color:#fff;
+}
+.button_buy {
+  background-color: rgb(25,157,179);
+  color:#fff;
+}
+.button_list {
+  background-color: #fff;
+  color:#000;
+}
+
+/* Quantity */
+.Quantity {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.Quantity input[type='checkbox']{
+  width: 36px;
+  height: 26px;
+}
+.Quantity span {
+  border:1px solid #000;
+  border-radius: 0.3rem;
+  text-align: center;
+  padding: 4px 12px;
+}
+.Quantity span:nth-of-type(2) {
+  background-color: #fff;
+  padding: 4px 16px;
+}
