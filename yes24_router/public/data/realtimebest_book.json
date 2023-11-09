@@ -1,0 +1,53 @@
+[
+  {
+    "number" : "1",
+    "image" : "https://image.yes24.com/goods/122426425/L",
+    "top_tag" : "오늘의책",
+    "kind" : "도서",
+    "title" : "트렌드 코리아 2024",
+    "comment" : "청룡을 타고 비상하는 2024를 기원하며!",
+    "author" : "김난도, 전미영, 최지혜, 이수진, 권정윤 저 외 6명",
+    "company" : "미래의창",
+    "pdate" : "2023년 10월",
+    "price" : "19,000원",
+    "point" : "950원",
+    "sale_index" : "599,958",
+    "review" : "49건",
+    "de_date" : "11월8일(수)",
+    "goods" : "서탐대실"
+  },
+  {
+    "number" : "2",
+    "image" : "https://image.yes24.com/goods/123155346/L",
+    "top_tag" : "예약 판매",
+    "kind" : "도서",
+    "title" : "더 마인드",
+    "comment" : "무의식이 이끄는 부의 해답",
+    "author" : "하와이 대저택",
+    "company" : "웅진지식하우스",
+    "pdate" : "2023년 10월",
+    "price" : "19,800원",
+    "point" : "990원",
+    "sale_index" : "224,140",
+    "review" : "4건",
+    "de_date" : "11월4일(수)",
+    "goods" : "이달의 굿즈"
+  },
+  {
+    "number" : "3",
+    "image" : "https://image.yes24.com/goods/122433629/L",
+    "top_tag" : "오늘의책",
+    "kind" : "도서",
+    "title" : "요즘 어른을 위한 최소한의 세계사",
+    "comment" : "펼치는 순간 단숨에 6,000년 역사가 읽히는",
+    "author" : "임소미",
+    "company" : "빅피시",
+    "pdate" : "2023년 9월",
+    "price" : "18,800원",
+    "point" : "940원",
+    "sale_index" : "191,550",
+    "review" : "27건",
+    "de_date" : "11월8일(수)",
+    "goods" : "세계사"
+  }
+]

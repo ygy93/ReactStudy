@@ -1,0 +1,53 @@
+[
+  {
+    "number" : "1",
+    "image" : "https://image.yes24.com/goods/122457906/L",
+    "top_tag" : "오늘의책",
+    "kind" : "도서",
+    "title" : "시대예보: 핵개인의 시대",
+    "comment" : "",
+    "author" : "송길영",
+    "company" : "교보문고",
+    "pdate" : "2023년 9월",
+    "price" : "21,000원",
+    "point" : "1050원",
+    "sale_index" : "310,890",
+    "review" : "75건",
+    "de_date" : "11월8일(수)",
+    "goods" : "이달의굿즈"
+  },
+  {
+    "number" : "2",
+    "image" : "https://image.yes24.com/goods/117014613/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "세이노의 가르침",
+    "comment" : "",
+    "author" : "세이노(SayNo)",
+    "company" : "데이원",
+    "pdate" : "2023년 3월",
+    "price" : "7,200원",
+    "point" : "360원",
+    "sale_index" : "1,837,242",
+    "review" : "328건",
+    "de_date" : "11월8일(수)",
+    "goods" : "인생지침서"
+  },
+  {
+    "number" : "3",
+    "image" : "https://image.yes24.com/goods/118579613/L",
+    "top_tag" : "강력추천, 오늘의책",
+    "kind" : "도서",
+    "title" : "도둑맞은 집중력",
+    "comment" : "집중력 위기의 시대, 삶의 주도권을 되찾는 법",
+    "author" : "요한 하리",
+    "company" : "어크로스",
+    "pdate" : "2023년 4월",
+    "price" : "18,800원",
+    "point" : "940원",
+    "sale_index" : "490,746",
+    "review" : "164건",
+    "de_date" : "11월8일(수)",
+    "goods" : "이달의굿즈"
+  }
+]

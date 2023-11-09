@@ -17,6 +17,9 @@ ul {
 li {
   list-style: none;
 }
+a {
+  text-decoration: none;
+}
 
 
 /* BookList */
@@ -45,7 +48,7 @@ li {
   align-items: center;
 }
 .bookimg {
-  width: 200px;
+  width: 180px;
 }
 .bookBtn {
   padding: 6px 30px;
@@ -60,14 +63,12 @@ li {
   display:flex;
   flex-direction: column;
   padding: 0 20px;
+  width: 70%;
 }
 
 /* BookBuy */
 .BookBuy {
-  display:flex;
-  flex-direction: column;
-  position: absolute;
-  right:0;
+  width: 154px;
 }
 .BookBuy button {
   width: 100%;
@@ -104,8 +105,15 @@ li {
   border-radius: 0.3rem;
   text-align: center;
   padding: 4px 12px;
+  background-color: #ddd;
 }
 .Quantity span:nth-of-type(2) {
   background-color: #fff;
   padding: 4px 16px;
+}
+
+
+/* monthweek menu */
+.monthweekmenu {
+  margin-left: 2rem;
 }

@@ -1,0 +1,53 @@
+[
+  {
+    "number" : "1",
+    "image" : "https://image.yes24.com/goods/123274055/L",
+    "top_tag" : "예약 판매",
+    "kind" : "도서",
+    "title" : "민주쌤의 매일 놀이 일력 365",
+    "comment" : "쉽고 간편하고 재미있다!",
+    "author" : "이민주",
+    "company" : "카시오페아",
+    "pdate" : "2023년 11월",
+    "price" : "24,000원",
+    "point" : "1200원",
+    "sale_index" : "46,410",
+    "review" : "0건",
+    "de_date" : "11월10일(금)",
+    "goods" : "사은품"
+  },
+  {
+    "number" : "2",
+    "image" : "https://image.yes24.com/goods/123310434/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "김대리의 데일리 뜨개",
+    "comment" : "누구나 쉽게 완성하는 감각적인 니트와 소품 14",
+    "author" : "김대리",
+    "company" : "웅진리빙하우스",
+    "pdate" : "2023년 11월",
+    "price" : "21,000원",
+    "point" : "1050원",
+    "sale_index" : "105,420",
+    "review" : "14건",
+    "de_date" : "11월9일(1일 이내)",
+    "goods" : "뜨개질 도안"
+  },
+  {
+    "number" : "3",
+    "image" : "https://image.yes24.com/goods/122090360/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "퓨처 셀프",
+    "comment" : "현재와 미래가 달라지는 놀라운 혁명",
+    "author" : "벤저민 하디",
+    "company" : "상상스퀘어",
+    "pdate" : "2023년 8월",
+    "price" : "19,800원",
+    "point" : "990원",
+    "sale_index" : "542,208",
+    "review" : "28건",
+    "de_date" : "11월8일(수)",
+    "goods" : "멘토를 찾아서"
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "number" : "1",
+    "image" : "https://image.yes24.com/goods/123257502/L",
+    "top_tag" : "예약판매",
+    "kind" : "도서",
+    "title" : "2024년 재테크의 여왕 슈엔슈 자산관리 가계부",
+    "comment" : "",
+    "author" : "슈엔슈",
+    "company" : "참돌",
+    "pdate" : "2023년 10월",
+    "price" : "17,000원",
+    "point" : "850원",
+    "sale_index" : "16,302",
+    "review" : "0건",
+    "de_date" : "11월15일(발송예정)",
+    "goods" : "사은품"
+  },
+  {
+    "number" : "2",
+    "image" : "https://image.yes24.com/goods/122965507/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "2024 뿌미맘 가계부",
+    "comment" : "2023년 11월, 12월 가계부 포함",
+    "author" : "상큼한 뿌미맘",
+    "company" : "시원북스",
+    "pdate" : "2023년 10월",
+    "price" : "15,000원",
+    "point" : "150원",
+    "sale_index" : "41,916",
+    "review" : "10건",
+    "de_date" : "11월8일(수)",
+    "goods" : "사은품"
+  },
+  {
+    "number" : "3",
+    "image" : "https://image.yes24.com/goods/123254648/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "2024 햇살콩 쓰담쓰닮 묵상다이어리",
+    "comment" : "",
+    "author" : "햇살콩",
+    "company" : "규장굿즈",
+    "pdate" : "2023년 11월",
+    "price" : "15,840원",
+    "point" : "",
+    "sale_index" : "19,104",
+    "review" : "0건",
+    "de_date" : "11월9일(목)",
+    "goods" : ""
+  }
+]

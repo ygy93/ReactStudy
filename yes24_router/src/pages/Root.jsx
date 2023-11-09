@@ -8,7 +8,7 @@ export default function Root(){
     <>
       <Navbar />
       <Outlet />
-      <Book />
+      {/* <Book /> */}
     </>
   );
 }

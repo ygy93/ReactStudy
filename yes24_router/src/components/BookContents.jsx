@@ -9,7 +9,7 @@ export default function BookContents(book){
       <p><span>{book.price}</span> 포인트 <span>{book.point}</span></p>
       <p>판매지수 <span>{book.sale_index}</span> 회원리뷰(<span>{book.review}</span>) 리뷰 총점10.0</p>
       <p><span>11/8(수)</span> 도착예정</p>
-      <p><span>{book.goods}</span> : 2024 캘린더& 다이어리</p>
+      <p>#{book.goods}</p>
     </div>
   );
 }

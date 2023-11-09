@@ -1,0 +1,53 @@
+[
+  {
+    "number" : "1",
+    "image" : "https://image.yes24.com/goods/99308021/L",
+    "top_tag" : "",
+    "kind" : "도서",
+    "title" : "불편한 편의점",
+    "comment" : "",
+    "author" : "김호연",
+    "company" : "나무옆의자",
+    "pdate" : "2021년 4월",
+    "price" : "14,000원",
+    "point" : "700원",
+    "sale_index" : "536,394",
+    "review" : "532건",
+    "de_date" : "11월8일(수)",
+    "goods" : "2022포천시올해의책"
+  },
+  {
+    "number" : "2",
+    "image" : "https://image.yes24.com/goods/112253263/L",
+    "top_tag" : "오늘의책, 2022 올해의 책",
+    "kind" : "도서",
+    "title" : "아버지의 해방일지",
+    "comment" : "",
+    "author" : "정지아",
+    "company" : "창비",
+    "pdate" : "2022년 9월",
+    "price" : "15,000원",
+    "point" : "750원",
+    "sale_index" : "486,054",
+    "review" : "344건",
+    "de_date" : "11월8일(수)",
+    "goods" : "이달의굿즈"
+  },
+  {
+    "number" : "3",
+    "image" : "https://image.yes24.com/goods/9349031/L",
+    "top_tag" : "강력추천, 오늘의책",
+    "kind" : "도서",
+    "title" : "원씽 THE ONE THING",
+    "comment" : "복잡한 세상을 이기는 단순함의 힘",
+    "author" : "게리 켈러, 제이 파파산",
+    "company" : "비즈니스북스",
+    "pdate" : "2013년 08월",
+    "price" : "14,000원",
+    "point" : "700원",
+    "sale_index" : "449,517",
+    "review" : "251건",
+    "de_date" : "11월8일(수)",
+    "goods" : "스페셜에디션"
+  }
+]
