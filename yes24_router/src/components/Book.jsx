@@ -7,7 +7,8 @@ import BookList from './BookList';
 export default function Book({filename}){
   const [bookList, setBookList] = useState([]); // 전역변수로 써넣어야 하므로
   useEffect(() => {
-    fetch(`data/${filename}best_book.json`) // 패치로 가져오면 스트링인 문자열로 넘어옴
+    fetch
+    (`data/${filename}best_book.json`) // 패치로 가져오면 스트링인 문자열로 넘어옴
     .then(res => res.json()) // 그러므로 제이슨 객체로 다시 바꿔준다
     .then(data => {
       setBookList(data);

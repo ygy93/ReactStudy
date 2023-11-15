@@ -1,0 +1,144 @@
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color:#000;
+}
+
+/* header */
+header {
+  display:flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.h1Link {
+  display:flex;
+  align-items: center;
+  color:rgb(189,124,122)
+}
+
+
+.shopIcon  {
+  width: 36px;
+  height: 100%;
+  padding-left: 10px;
+}
+.shopIcon path {
+  width: 36px;
+}
+
+.gnb {
+  display:flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 25%;
+  font-weight: 600;
+}
+.gnb a {
+  display:flex;
+  align-items: center;
+  height: 100%;
+}
+
+.gnb button {
+  background-color: #fff;
+  border:none;
+  font-weight: bold;
+  height: 100%;
+}
+
+
+
+/* home */
+.homecontents {
+  width: 1200px;
+  margin:0 auto;
+}
+
+.banner {
+  position: relative;
+}
+.banner img {
+  width: 100%;
+  height: 300px;
+  object-fit:cover;
+  filter:brightness(60%);
+}
+.bannerText {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  color:#fff;
+}
+.bannerText p {
+  margin:0;
+}
+.bannerFontFirst {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+/* productList */
+.productList ul {
+  padding: 0;
+  margin:10px 0;
+  display:flex;
+  flex-wrap: wrap;
+}
+.productList ul li {
+  width: 33%;
+  list-style: none;
+  position: relative;
+}
+.productList ul li:nth-of-type(3n-1){
+  margin: 0 6px;
+}
+.productList ul li img {
+  width: 100%;
+}
+.productList ul li span {
+  position: absolute;
+  top:0;
+  padding: 10px 0 0 10px;
+}
+
+
+/* NewProduct */
+.NewProduct {
+  width: 1200px;
+  margin:0 auto;
+  text-align: center;
+}
+
+.font_title {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.new_product ul{
+  padding: 0;
+  
+}
+.new_product ul li {
+  margin:10px 0px;
+  
+}
+.new_product input {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.new_product button {
+  width: 100%;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color:rgb(226, 80, 75);
+  color:#fff;
+  border:none;
+}
