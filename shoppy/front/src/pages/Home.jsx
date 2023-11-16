@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import AllProduct from './AllProducts';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function Home(){
   const [productList, setProductList] = useState([])
   useEffect(() => {
-    fetch('data/productData.json')
-    .then(res => res.json())
+    axios
+    .get('http://localhost:8000/products/')
     .then(data => 
-      setProductList(data)
+      setProductList(data.data)
     )
   },[])
 
@@ -27,9 +27,9 @@ export default function Home(){
           {
             productList.map((list) => 
               <li>
-                <Link to = {`/products/${list.number}`}>
-                  <span>No. {list.number}</span>
-                  <img src={list.image} alt="" />
+                <Link to = {`/products/${list.pid}`}>
+                  <span>No. {list.pid}</span>
+                  <img src={`/images/image/${list.image}`} alt="" />
                 </Link>
               </li>
             )

@@ -14,7 +14,7 @@ export default function Navbar(){
         <Link to = '/products'>Products</Link>
         <Link to = '/carts'>Carts</Link>
         <Link to = '/products/new'><BsFillPencilFill /></Link>
-        <button type="button">Login</button>
+        <Link to = 'login'><button type="button">Login</button></Link>
       </nav>
     </header>
   );
