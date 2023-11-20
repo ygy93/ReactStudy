@@ -14,3 +14,9 @@ export async function getLogin(id){
   .execute('select count(pass) as count, ANY_VALUE(pass) as pass from shoppy_member where id = ?',[id])
   .then((rows) => rows[0][0]) // [0][0] 은 한줄만 가져오기 때문, 이것이 생략되면 배열로되므로 object : Object 로 뜸
 }
+
+export async function getIdCheck(id){
+  return db
+  .execute('select count(id) as count from shoppy_member where id = ?', [id])
+  .then((rows) => rows[0][0])
+}

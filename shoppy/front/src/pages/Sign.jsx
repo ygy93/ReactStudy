@@ -5,10 +5,34 @@ import axios from 'axios';
 export default function Sign(){
   const navigate = useNavigate();
   const [signInfo, setSignInfo] = useState({name : "", id : "", pass : "", phone : ""});
-  
+
+  // 아이디 중복체크 결과출력 메시지
+  const [checkError, setCheckError] = useState('');
+
   const handleChange = (e) => {
     const {name, value} = e.target;
     setSignInfo({...signInfo, [name] : value})
+
+    // 아이디 중복체크
+    if(name === 'id' && value !== ''){
+      axios({
+        method : 'get',
+        url : `http://localhost:8000/sign/${value}`,
+      })
+      .then(data => {
+        if(data.data.count === 1){
+          setCheckError('이미 사용중인 아이디 입니다.');
+        } else if (data.data.count === 0){
+          setCheckError('사용 가능한 아이디 입니다.')
+        }
+      })
+      .catch((err) => console.log(err))
+    } else if(name === 'id' && value === ''){
+      setCheckError('');
+    }
+
+    // 비밀번호 개수 제한
+    
   }
 
   const inputName = useRef(null);
@@ -68,6 +92,7 @@ export default function Sign(){
           <li>
             <label>아이디</label>
             <input type="text" name="id" value={signInfo.id} ref={inputId} onChange={handleChange} />
+            <div className="checkerror">{checkError}</div>
           </li>
           <li>
             <label>패스워드</label>

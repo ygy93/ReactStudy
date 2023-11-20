@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Sign from './pages/Sign';
 import NotFound from './pages/NotFound';
+import { CookiesProvider } from 'react-cookie';
 
 
 const router = createBrowserRouter([
@@ -34,7 +35,9 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router = {router} />
+    <CookiesProvider>{/* 쿠키사용시 필요함 */}
+      <RouterProvider router = {router} />
+    </CookiesProvider>
   </React.StrictMode>
 );
 

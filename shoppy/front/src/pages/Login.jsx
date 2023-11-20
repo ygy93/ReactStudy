@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import * as Cookie from './../util/cookie';
+import {jwtDecode} from 'jwt-decode';
 
 export default function Login(){
   const navigate = useNavigate();
@@ -37,7 +39,17 @@ export default function Login(){
       // setLoginForm(data.data)
       if(data.data.login_result){
         alert('로그인 성공');
+
+        // 토큰을 쿠키에 추가
+        Cookie.setCookie('x-auth-jwt', data.data.token);
+
+        // 토큰에 추가된 id 추출 후 로컬스토리지에 저장
+        const userInfo = jwtDecode(data.data.token); // 그냥은 넘어오지않아서 프딴에 jwtdecode 를 설치하여 사용
+        // alert(JSON.stringify(userInfo));
+        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+        // 세션저장소는 웹을 종료하면 삭제되지만, 로컬스토리지에 저장된값은 남아있기에 이를 활용
         navigate('/');
+
       } else if (data.data.count === 1) {
         alert('비밀번호가 다릅니다. 다시 확인해주세요.');
         setLoginForm({...loginForm, pass : ''})
