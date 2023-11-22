@@ -210,6 +210,7 @@ header {
   width:100%;
   padding:8px ;
   margin-top:15px;
+  cursor: pointer;
 }
 .font_title{
   text-indent: 40px;
@@ -226,4 +227,33 @@ header {
 
 .welcome {
   margin-right: 20px;
+}
+
+
+/* Quantity */
+.quantity :nth-child(2){
+  background-color: white;
+  padding:0px 10px;
+}
+.quantity span{
+  /* padding-top:0.2rem; */
+  border:1px solid lightgray;
+  border-radius: 0.2rem;
+  background-color: rgb(243, 242, 242);
+  width:30px; height:28px;
+  display:block;
+  float:left;
+}
+.quantity span:nth-of-type(1),
+.quantity span:nth-of-type(3){
+  cursor: pointer;
+}
+.quantity p{
+  text-align:center;
+}
+.quantity p {
+  justify-content: space-between;
+  /* border:1px solid blue; */
+  width:100%;
+  overflow:hidden;
 }

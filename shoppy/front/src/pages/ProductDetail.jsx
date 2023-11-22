@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate, useLocation } from 'react-router-dom';
 // import ProductAvata from "../components/ProductAvata";
 // import ProductList from "../components/ProductList";
 import { useRef } from "react";
 import { getUser } from '../util/localStorage.js';
+import Quantity from "../components/Quantity.jsx";
+import * as cookie from './../util/cookie';
 
 export default function ProductDetail(){
   const { pid } = useParams();
@@ -13,6 +15,7 @@ export default function ProductDetail(){
   const selectSize = useRef(null);
   const userInfo = getUser(); // 로그인 유무
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -40,10 +43,19 @@ export default function ProductDetail(){
     // alert(JSON.stringify(userInfo));
     if(userInfo === null){
       alert('로그인 후 상품추가가 가능합니다.');
+
+      // 현재 주소를 쿠키에 저장
+      // alert(JSON.stringify(location))
+      cookie.setCookie('sproduct', JSON.stringify(location.pathname))
+      
       navigate('/login');
     } else {
-      // alert(JSON.stringify(product))
-      const cartProduct = { id:userInfo.id, pid:product.pid, size:product.size }
+      // alert(JSON.stringify(product)), 회원아이디, 상품아이디, 사이즈
+      const cartProduct = { 
+        id:userInfo.id, pid:product.pid, size:product.size,
+        qty : qty /* 아래 하위컴포넌트에서 number 값 가져오는것을 사용함 */
+      }
+      // alert(JSON.stringify(cartProduct))
 
       axios({
         method : 'post',
@@ -52,12 +64,23 @@ export default function ProductDetail(){
       })
       .then((data) => {
         if(data.data === 'good'){
-          alert('장바구니에 추가하였습니다.')
+          // 쿠키에 삭제된 sproduct 삭제
+          cookie.removeCookie('sproduct');
+
+          const choice = window.confirm('장바구니에 추가하였습니다. 장바구니로 이동하시겠습니까?')
+
+          if(choice) navigate('/carts');
         }
       })
       .catch(err => console.log(err))
     }
-    
+  }
+
+  // 하위(자식) 컴포넌트인 Quantity 의 number 값 가져오기
+  const [qty, setQty] = useState(0);
+  const getQty = (e) => {
+    setQty(e);
+    // alert(`qty --->> ${qty}`);
   }
 
   return(
@@ -68,6 +91,9 @@ export default function ProductDetail(){
           <li className ="detail_font_bigger">{product.name}</li>
           <li className ="detail_font_bigger">{product.price}</li>
           <li className ="detail_font_small">{product.info}</li>
+          <li>
+            <Quantity getQty = {getQty}/>
+          </li>
           <li>
               <span className ="detail_font_small">옵션 : </span>
               <select className ="detail_select" name="size" onChange={handleChange} ref={selectSize}>

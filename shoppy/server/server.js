@@ -4,6 +4,7 @@ import allProductsRouter from './router/allProductsRouter.js';
 import signRouter from './router/signRouter.js';
 import loginRouter from './router/loginRouter.js';
 import newCartsRouter from './router/newCartsRouter.js';
+import cartsRouter from './router/cartsRouter.js';
 import cors from 'cors';
 
 const server = express();
@@ -19,6 +20,7 @@ server.use('/sign', signRouter)
 server.use('/login', loginRouter)
 
 server.use('/carts/new', newCartsRouter)
+server.use('/carts', cartsRouter)
 
 server.listen(PORT, () => {
   console.log(`server running --> ${PORT}`);

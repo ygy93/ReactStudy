@@ -32,7 +32,9 @@ export default function Sign(){
     }
 
     // 비밀번호 개수 제한
-    
+    // if(name === 'pass' && value.length <= 4){
+    //   setCheckError('비밀번호는 최소 4글자 이상 입니다.')
+    // }
   }
 
   const inputName = useRef(null);

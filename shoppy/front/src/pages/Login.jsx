@@ -48,7 +48,16 @@ export default function Login(){
         // alert(JSON.stringify(userInfo));
         localStorage.setItem('userInfo', JSON.stringify(userInfo));
         // 세션저장소는 웹을 종료하면 삭제되지만, 로컬스토리지에 저장된값은 남아있기에 이를 활용
-        navigate('/');
+
+        // 쿠키에 저장된 sproduct 값을 체크한 후 이동
+        const sproduct = Cookie.getCookie('sproduct');
+        if(sproduct === undefined){
+          navigate('/');
+        } else {
+          navigate(sproduct)
+        }
+
+        
 
       } else if (data.data.count === 1) {
         alert('비밀번호가 다릅니다. 다시 확인해주세요.');
