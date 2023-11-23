@@ -92,7 +92,7 @@ export default function ProductDetail(){
           <li className ="detail_font_bigger">{product.price}</li>
           <li className ="detail_font_small">{product.info}</li>
           <li>
-            <Quantity getQty = {getQty}/>
+            <Quantity getQty = {getQty} qty = {product.qty}/>
           </li>
           <li>
               <span className ="detail_font_small">옵션 : </span>

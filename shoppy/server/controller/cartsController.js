@@ -11,3 +11,9 @@ export async function getCartList(req, res) {
   const result = await cartsRepository.getCartList({id});
   res.json(result);
 }
+
+export async function removeCartList(req, res){
+  const { cid } = req.params;
+  const result = await cartsRepository.removeCartList({cid});
+  res.json(result);
+}

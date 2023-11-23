@@ -5,5 +5,6 @@ const router = express.Router();
 
 router
 .get('/:id', cartsController.getCartList)
+.delete('/:id/:cid', cartsController.removeCartList)
 
 export default router;
