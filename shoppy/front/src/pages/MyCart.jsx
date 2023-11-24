@@ -6,7 +6,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Quantity from "../components/Quantity.jsx";
 
-export default function MyCart(){/* 페이지 보안을 위해서 주소페이지에서 보안코딩을 넣어줘야함 */
+export default function MyCart(prop){/* 페이지 보안을 위해서 주소페이지에서 보안코딩을 넣어줘야함 */
   const userInfo = localStorage.getUser();
 
   // 상품 총가격
@@ -14,26 +14,40 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
   const [totDeliPrice, setTotDeliPrice] = useState(0);
   const [totOrderPrice, setTotOrderPrice] = useState(0);
 
-  // 카트 cid 삭제
-  const [removeCartList, setRemoveCartList] = useState();
+  const [qty, setQty] = useState(1);
+
+  const [userCartList, setUserCartList] = useState([]);
+
+
+  // 수량 업데이트
+  function updateQty (cid, checkFlag){
+    // console.log(cid);
+    // carts/:고객아이디/:장바구니아이디/:상태값
+    axios
+    .get(`http://localhost:8000/carts/${userInfo.id}/${cid}/${checkFlag}`)
+    .then(data => {
+      window.location.reload();
+    })
+    .catch(err => console.log(err))
+  }
+
 
   // 장바구니 수량
-  const [qty, setQty] = useState(1);
   const getQty = (e) => {
     // alert(JSON.stringify(e.flag)) // 수량, 상품가격, flag
-    setQty(e);
+    setQty(e.qty);
+
+    // console.log(e);
 
     if(e.flag === 'plus') {
-      if(e.qty < 11){
+      if(e.qtyFlag){
+        updateQty(e.cid, e.flag)// DB 에서 수량 변경 ++
         setTotPrice(totPrice + parseInt(e.price))
         setTotOrderPrice(totPrice + parseInt(e.price))
       }
-      else if(e.qty >10){
-        setTotPrice(totPrice + 0)
-        setTotOrderPrice(totPrice + 0)
-      }
     } else {
-      if(e.qty > 0){
+      if(e.qtyFlag){
+        updateQty(e.cid, e.flag)// DB 에서 수량 변경 --
         setTotPrice(totPrice - parseInt(e.price));
         setTotOrderPrice(totPrice - parseInt(e.price))
       }
@@ -42,7 +56,6 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
 
   // 서버에 회원의 장바구니 리스트 가져오기
   // http://localhost:8000/carts/test --> http://localhost:8000/carts/:id
-  const [userCartList, setUserCartList] = useState([]);
   useEffect(() => {
     axios
     .get(`http://localhost:8000/carts/${userInfo.id}`)
@@ -65,7 +78,7 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
   }
 
 
-  // 삭제 버튼 이벤트
+  // 카트 삭제 버튼 이벤트
   const handleDelete = async(e) => {
     const cid = e.target.dataset.id;
 
@@ -78,16 +91,34 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
     .catch(err => console.log(err))
   }
 
-
+  
   // 주문하기 버튼 이벤트
   const [order, setOrder] = useState([]);
   const handleOrder = (e) => {
-    // 회원id, pid, size, qty, totprice -> JSON 객체로 생성
-    // post 방식으로 서버에 전송
-    const orderInfo = JSON.stringify(userCartList)
-    console.log(orderInfo);
-
     // alert(JSON.stringify(userCartList));
+    // ? 실행하려는 기능에 관련된 데이터는 어디있는가? -> userCartList : 정확한 데이터 추가
+    // 회원id, pid, size, qty, totprice -> JSON 객체로 생성 -> newOrderList
+    const newOrderList = []; // new Array()
+    userCartList.map((cart) => {
+      const orderProduct = {
+        id : cart.id, 
+        pid : cart.pid,
+        size : cart.size,
+        qty : cart.qty,
+        totPrice : cart.tprice
+      }
+      newOrderList.push(orderProduct)
+    })
+    // alert(JSON.stringify(newOrderList))
+    // post 방식으로 서버에 전송
+    axios
+    .post(`http://localhost:8000/order/new/`, newOrderList)
+    .then(data => {
+      if(data.data === 'good'){
+        alert('주문 테이블 추가 성공')
+      }
+    })
+    .catch(err => console.log(err))
   }
 
 
@@ -156,7 +187,7 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
                       <td>{cartList.price}</td>
                       <td>{totDeliPrice} 원</td>
                       <td>
-                        <Quantity qty={cartList.qty} price={cartList.price} getQty={getQty} />
+                        <Quantity qty={cartList.qty} price={cartList.price} getQty={getQty} cid={cartList.cid}/>
                         <Button type="button" variant="danger" onClick={handleDelete} data-id = {cartList.cid}>삭제</Button>
                       </td>
                     </tr>

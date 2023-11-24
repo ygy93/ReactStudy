@@ -25,3 +25,17 @@ export async function removeCartList({ cid }){
   .execute(sql, [cid])
   .then((result) => 'good')
 }
+
+
+export async function updateQty({id, cid, checkFlag}){
+  let sql = ``;
+  if(checkFlag === 'plus'){
+    sql = `update shoppy_cart set qty = qty + 1 where cid = ?`;
+  } else {
+    sql = `update shoppy_cart set qty = qty - 1 where cid = ?`;
+  }
+
+  return db
+  .execute(sql, [cid])
+  .then((result) => 'good')
+}

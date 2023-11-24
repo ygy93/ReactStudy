@@ -5,6 +5,7 @@ import signRouter from './router/signRouter.js';
 import loginRouter from './router/loginRouter.js';
 import newCartsRouter from './router/newCartsRouter.js';
 import cartsRouter from './router/cartsRouter.js';
+import orderRouter from './router/orderRouter.js';
 import cors from 'cors';
 
 const server = express();
@@ -16,11 +17,14 @@ server.use(cors());
 
 server.use('/products', allProductsRouter) // products/:id 형식의 파라미터도 함께 처리
 server.use('/products/new', newProductsRouter)
+
 server.use('/sign', signRouter)
 server.use('/login', loginRouter)
 
 server.use('/carts/new', newCartsRouter)
 server.use('/carts', cartsRouter)
+
+server.use('/order/new', orderRouter)
 
 server.listen(PORT, () => {
   console.log(`server running --> ${PORT}`);

@@ -79,7 +79,7 @@ export default function ProductDetail(){
   // 하위(자식) 컴포넌트인 Quantity 의 number 값 가져오기
   const [qty, setQty] = useState(0);
   const getQty = (e) => {
-    setQty(e);
+    setQty(e.qty);
     // alert(`qty --->> ${qty}`);
   }
 
@@ -92,7 +92,7 @@ export default function ProductDetail(){
           <li className ="detail_font_bigger">{product.price}</li>
           <li className ="detail_font_small">{product.info}</li>
           <li>
-            <Quantity getQty = {getQty} qty = {product.qty}/>
+            <Quantity getQty = {getQty} /* qty = {1} *//>{/* Quantity 값들을 MyCart 에서 가져와 숫자가 보이지않아 초기값을 1 로 가져옴 */}
           </li>
           <li>
               <span className ="detail_font_small">옵션 : </span>

@@ -17,3 +17,12 @@ export async function removeCartList(req, res){
   const result = await cartsRepository.removeCartList({cid});
   res.json(result);
 }
+
+export async function updateQty(req, res){
+  const { id, cid, checkFlag } = req.params;
+
+  // console.log(JSON.stringify({id, cid, checkFlag}));
+
+  const result = await cartsRepository.updateQty({id, cid, checkFlag});
+  res.json(result);
+}
