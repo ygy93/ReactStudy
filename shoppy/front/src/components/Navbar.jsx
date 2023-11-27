@@ -28,6 +28,7 @@ export default function Navbar(){
               <span className="welcome">"{userInfo.id}" 님! 반갑습니다!</span>
               <Link to = '/products'>Products</Link>
               <Link to = '/carts'>Carts</Link>
+              <Link to = '/order'>Order</Link>
               <Link to = '/products/new'><BsFillPencilFill /></Link>
               <Link to = '/'><button type="button" onClick={handleLogout}>Logout</button></Link>
             </>

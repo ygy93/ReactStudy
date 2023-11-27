@@ -8,6 +8,7 @@ import AllProduct from './pages/AllProducts';
 import ProductDetail from './pages/ProductDetail';
 import NewProduct from './pages/NewProduct';
 import MyCart from './pages/MyCart';
+import MyOrder from './pages/MyOrder';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Sign from './pages/Sign';
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
       { path : '/carts', element : <MyCart /> },
       { path : '/login', element : <Login /> },
       { path : '/sign', element : <Sign /> },
+      { path : '/order', element : <MyOrder /> },
     ]
   }
 ]);

@@ -5,6 +5,7 @@ const router = express.Router();
 
 router
 .get('/:id', cartsController.getCartList)
+.get('/:id/:startIndex/:endIndex', cartsController.getPageList)
 .get('/:id/:cid/:checkFlag', cartsController.updateQty)
 .delete('/:id/:cid', cartsController.removeCartList)
 

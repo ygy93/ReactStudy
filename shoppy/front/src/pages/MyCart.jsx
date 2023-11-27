@@ -5,9 +5,23 @@ import axios from "axios";
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Quantity from "../components/Quantity.jsx";
+import { useNavigate } from 'react-router-dom';
+
+// 페이징 처리
+import Pagination from 'rc-pagination';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'rc-pagination/assets/index.css';
 
 export default function MyCart(prop){/* 페이지 보안을 위해서 주소페이지에서 보안코딩을 넣어줘야함 */
+  // 페이징 처리
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCount, setTotalCount] = useState(0); // 토탈카운트는 장바구니에 쌓이는 개수에 따라 달라지기때문에 db 에서 관리해야해서 초기값 0
+  const [pageSize, setPageSize] = useState(2);
+  // const [startIndex, setStartIndex] = useState();
+  // const [endIndex, setEndIndex] = useState();
+
   const userInfo = localStorage.getUser();
+  const navigate = useNavigate();
 
   // 상품 총가격
   const [totPrice, setTotPrice] = useState(0);
@@ -57,10 +71,22 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
   // 서버에 회원의 장바구니 리스트 가져오기
   // http://localhost:8000/carts/test --> http://localhost:8000/carts/:id
   useEffect(() => {
+    // startIndex, endIndex
+    let startIndex = 0;
+    let endIndex = 0;
+
+    startIndex = (currentPage - 1) * pageSize + 1; // 1 - 1 * 3 + 1 : 1, 4
+    endIndex = currentPage * pageSize; // 1 * 3 : 3, 6,...
+
+    // alert(`startIndex --> ${startIndex}, endIndex --> ${endIndex}`)
+
+
     axios
-    .get(`http://localhost:8000/carts/${userInfo.id}`)
+    // .get(`http://localhost:8000/carts/${userInfo.id}`)
+    .get(`http://localhost:8000/carts/${userInfo.id}/${startIndex}/${endIndex}`)
     .then(data => {
       setUserCartList(data.data)
+      setTotalCount(data.data[0].cnt)
       // console.log(data.data)
 
       // 총 상품가격 : totPrice, 수량 * 가격
@@ -71,7 +97,7 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
       setTotOrderPrice(newTotOrderPrice);
     })
     .catch(err => console.log(err))
-  },[])
+  },[currentPage]) // 체크박스 눌렀을때 다시 호출했던 방법을 응용
   // 총 상품가격 계산함수
   const setNewTotPrice = (cartList) => {
     return cartList.reduce((total, cart) => total + (cart.price * cart.qty), 0);
@@ -116,6 +142,7 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
     .then(data => {
       if(data.data === 'good'){
         alert('주문 테이블 추가 성공')
+        navigate('/order');
       }
     })
     .catch(err => console.log(err))
@@ -127,7 +154,7 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
     margin:'auto'
   }
   let selectStyle = {
-    marginLeft:'20px'
+    marginBottom:'10px'
   }
   let imgStyle = {
     width:'120px',
@@ -195,6 +222,14 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
                 }
               </tbody>
             </Table>
+
+            <Pagination className="d-flex justify-content-center" style={selectStyle}
+              current={currentPage}
+              total={totalCount}
+              pageSize={pageSize}
+              onChange={(page) => setCurrentPage(page)}/* current */
+            />
+
             <div className="tot_div_style">
               <label>총 상품가격</label><span className="tot_font_style">{totPrice.toLocaleString()}</span>{/* 3자리씩 , 넣기 */}
               <label> + 총 배송비</label><span className="tot_font_style">{totDeliPrice.toLocaleString()}</span>
