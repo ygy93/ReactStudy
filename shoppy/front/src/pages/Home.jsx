@@ -25,13 +25,15 @@ export default function Home(){
         <div className="productList">
           <ul>
           {
-            productList.map((list) => 
-              <li>
-                <Link to = {`/products/${list.pid}`}>
-                  <span>No. {list.pid}</span>
-                  <img src={`/images/image/${list.image}`} alt="" />
-                </Link>
-              </li>
+            productList.map((list) => {
+                console.log(list.image);
+                return <li>
+                  <Link to = {`/products/${list.pid}`}>
+                    <span>No. {list.pid}</span>
+                    <img src={`http://127.0.0.1:8000/${list.image}`} alt="" />
+                  </Link>
+                </li>
+              }
             )
           }
         </ul>

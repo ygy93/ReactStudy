@@ -198,7 +198,7 @@ export default function MyCart(prop){/* 페이지 보안을 위해서 주소페�
                     <tr>
                       <td>No. {cartList.rno}, {cartList.cid}</td>
                       <td>
-                        <img src={`images/image/${cartList.image}`} style={imgStyle}/>
+                        <img src={`http://127.0.0.1:8000/${cartList.image}`} style={imgStyle}/>
                         {cartList.name}
                       </td>
                       {/* <td>

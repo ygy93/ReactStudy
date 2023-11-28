@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import ImageUpload from "../components/ImageUpload";
+import { getUser } from './../util/localStorage';
 
 export default function NewProduct(){
+  const userInfo = getUser();
+
   const [form, setForm] = useState({image : "", name : "", price : "", info : ""});
+  const [image,setImage] = useState(null); // ImageUpload 컴포넌트 파라미터값 연결
+
+  // ImageUpload 선택 이미지 경로 가져오기
+  const getImage = (e) => {
+    // alert(`new file --> ${JSON.stringify(e)}`)
+
+    setImage(e);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target; // 정보를 입력할때마다 값이 초기화가 됨
@@ -13,12 +25,29 @@ export default function NewProduct(){
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    // FormData 를 이용하여 name, value 를얻어올 수 있음
+    for(let pair of formData.entries()){
+      console.log(`${pair[0]} : ${pair[1]}`);
+    }
+
+    // 또는 FormData 를 직접 객체로 변환할 수도 있음
+    const formDataObject = {};
+    formData.forEach((value, key) => {
+      formDataObject[key] = value;
+    })
+    // console.log('FormData as object : ', formDataObject);
+
+    // alert(JSON.stringify(form));
     // console.log(form);
-    // post --> axios
+
+    // post --> axios 
       axios({
         method : 'post',
         url : `http://localhost:8000/products/new`,
-        data : form,
+        data : formDataObject,
       })
       .then(result => {
         if(result.data === 'good'){
@@ -41,10 +70,18 @@ export default function NewProduct(){
       </p>
       <form className="new_product" onSubmit={handleSubmit}>
         <ul>{/* onChange 는 지정된 태그의 밸류값이 바뀌었을때 실행되는것 */}
-          <li><input type="text" name="image" placeholder="image" onChange={handleChange} value={form.image}/></li>
-          <li><input type="text" name="name" placeholder="name" onChange={handleChange} value={form.name}/></li>
-          <li><input type="text" name="price" placeholder="price" onChange={handleChange} value={form.price}/></li>
-          <li><input type="text" name="info" placeholder="info" onChange={handleChange} value={form.info}/></li>
+          <li>
+            <input type="hidden" name="image" placeholder="image" value={image}/>
+            <ImageUpload getImage={getImage} />
+            {
+              (image != null) ?
+              <img src={`http://localhost:8000/${image}`} alt="" style={{width : 100}} />
+              : null
+            }
+          </li>
+          <li><input type="text" name="name" placeholder="name" /></li> {/* onChange={handleChange} value={form.name} */}
+          <li><input type="text" name="price" placeholder="price"/></li>
+          <li><input type="text" name="info" placeholder="info"/></li>
         </ul>
         <button className="new_product_button">제품 등록하기</button>
       </form>

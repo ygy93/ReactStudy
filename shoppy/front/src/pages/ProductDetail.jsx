@@ -86,7 +86,7 @@ export default function ProductDetail(){
   return(
     <div className="content">
       <div className ="product_detail">
-        <img src={`/images/image/${product.image}`} className="detail_image"/>
+        <img src={`http://127.0.0.1:8000/${product.image}`} className="detail_image"/>
         <ul className ="product_info">
           <li className ="detail_font_bigger">{product.name}</li>
           <li className ="detail_font_bigger">{product.price}</li>

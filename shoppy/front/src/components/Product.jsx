@@ -22,7 +22,7 @@ export default function Product(){
         productList.map((product) => 
           <div key={`${product.pid}`}>
             <Link to = {`/products/${product.pid}`}>
-              <ProductAvata image={`/images/image/${product.image}`}/>
+              <ProductAvata image={`http://localhost:8000/${product.image}`}/>
             </Link>
           </div>
         )
