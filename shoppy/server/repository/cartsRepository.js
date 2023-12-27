@@ -21,11 +21,30 @@ export async function getCartList({ id }){
 export async function getPageList({ id, startIndex, endIndex }){
   return db
   .execute(`
-  select rno, image, name, price, qty, size, pid, id, cid, cnt
-  from (select row_number() over(order by sc.cdate) as rno, cart.cnt, sc.pid, sc.id, cid, sp.name, image, size, price, qty, left(cdate,10) as cdate 
-  from shoppy_member sm, shoppy_products sp, shoppy_cart sc,
-  (select count(*) as cnt from shoppy_cart where id=?) cart where sm.id = sc.id and sp.pid = sc.pid and sc.id = ?) 
-  cartList where rno between ? and ?;`, [id, id, startIndex, endIndex])
+  select rno, image, name, price, qty, size, tprice, pid, id, cid, cnt, totalPrice
+from
+(select row_number() over (order by sc.cdate) as rno, 
+	sp.image, 
+	sp.name, 
+	sp.price, 
+	sc.qty, 
+	sc.size, 
+	sp.price*sc.qty as tprice, 
+	sp.pid, 
+	sm.id,
+	sc.cid,
+    cnt,
+    totalPrice
+from  shoppy_member sm, 
+	shoppy_products sp, 
+	shoppy_cart sc,
+    (select count(*) cnt, sum(sp.price*sc.qty) as totalPrice 
+		from shoppy_cart sc, shoppy_products sp where sc.pid = sp.pid and id=?) cart
+		where sm.id = sc.id 
+			and sp.pid = sc.pid
+			and sc.id = ? ) cartList
+where rno between ? and ?;
+`, [id, id, startIndex, endIndex])
   .then((rows) => rows[0])
 }
 

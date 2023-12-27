@@ -26,7 +26,7 @@ export default function Home(){
           <ul>
           {
             productList.map((list) => {
-                console.log(list.image);
+                // console.log(list.image);
                 return <li>
                   <Link to = {`/products/${list.pid}`}>
                     <span>No. {list.pid}</span>

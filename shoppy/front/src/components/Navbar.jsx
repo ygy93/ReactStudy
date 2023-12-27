@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FiShoppingBag } from 'react-icons/fi';
 import { BsFillPencilFill } from 'react-icons/bs';
-import * as localStorage from '../util/localStorage.js'; 
+import * as localStorage from '../util/localStorage.js';
 
 export default function Navbar(){
   const navigate = useNavigate();

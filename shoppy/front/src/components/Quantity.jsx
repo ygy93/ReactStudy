@@ -40,11 +40,11 @@ export default function Quantity(props){ // Quantity({getQty}) 상품디테일�
 
   return(
     <div className="quantity">
-    <p>      
-      <span onClick={() => {quantityCheck("minus")}}>-</span> {/* 함수를 직접 바로 주면 즉시 계속 실행되므로 () => 콜백으로 줘야함 */}
-      <span>{number}</span>
-      <span onClick={() => {quantityCheck("plus")}}>+</span>
-    </p>
+      <p>      
+        <span onClick={() => {quantityCheck("minus")}}>-</span> {/* 함수를 직접 바로 주면 즉시 계속 실행되므로 () => 콜백으로 줘야함 */}
+        <span>{number}</span>
+        <span onClick={() => {quantityCheck("plus")}}>+</span>
+      </p>
     </div>
   );
 }

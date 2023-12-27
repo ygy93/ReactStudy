@@ -35,6 +35,27 @@ export default function Sign(){
     // if(name === 'pass' && value.length <= 4){
     //   setCheckError('비밀번호는 최소 4글자 이상 입니다.')
     // }
+
+    // 아이디 중복 체크
+    // if(name === 'uid' && value !== ''){
+      // let length = e.target.value.length;
+      // axios
+      // .get(`http://127.0.0.1:8000/sign/${value}`)
+      // .then(data => {
+        // if((length < 4) && ((data.data.cnt === 1) || (data.data.cnt === 0))) {
+        //   setCheckError('');
+        // } else if((data.data.cnt === 0) && ((length > 4 || length < 16) && (!/^[a-zA-Z0-9]*$/.test(e.target.value) )) || (length > 16)){
+        //   setCheckError('사용 불가능한 아이디 입니다.')
+        // } else if ((data.data.cnt === 0) ){
+        //   setCheckError('사용 가능한 아이디 입니다.')
+        // } else if(data.data.cnt === 1){
+        //   setCheckError('이미 사용중인 아이디 입니다.');
+        // }
+    //   })
+    //   .catch((err) => console.log(err))
+    // } else if(name === 'uid' && value === ''){
+    //   setCheckError('');
+    // }
   }
 
   const inputName = useRef(null);
