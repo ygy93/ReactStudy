@@ -14,7 +14,8 @@ import Login from './pages/Login';
 import Sign from './pages/Sign';
 import NotFound from './pages/NotFound';
 import { CookiesProvider } from 'react-cookie';
-
+import MyCount from './pages/MyCount';
+import MyInfo from './pages/MyInfo';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,8 @@ const router = createBrowserRouter([
       { path : '/login', element : <Login /> },
       { path : '/sign', element : <Sign /> },
       { path : '/order', element : <MyOrder /> },
+      { path : '/count', element : <MyCount /> },
+      { path : '/info', element : <MyInfo /> },
     ]
   }
 ]);

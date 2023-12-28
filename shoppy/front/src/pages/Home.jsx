@@ -25,9 +25,9 @@ export default function Home(){
         <div className="productList">
           <ul>
           {
-            productList.map((list) => {
+            productList.map((list,i) => {
                 // console.log(list.image);
-                return <li>
+                return <li key={i}>
                   <Link to = {`/products/${list.pid}`}>
                     <span>No. {list.pid}</span>
                     <img src={`http://127.0.0.1:8000/${list.image}`} alt="" />

@@ -30,7 +30,11 @@ export default function useCart(currentPage,userInfo){
     .get(`http://localhost:8000/carts/${userInfo.id}/${startIndex}/${endIndex}`)
     .then(data => {
       setUserCartList(data.data)
-      setTotalCount(data.data[0].cnt)
+
+      const rows = data.data[0];
+      (rows === undefined) ? setTotalCount(0) : setTotalCount(data.data[0].cnt);
+
+      // setTotalCount(data.data[0].cnt) // 장바구니에 데이터가 없을때 불러올수없기에 에러가 뜨는것
       // console.log(data.data)
 
       // 총 상품가격 : totPrice, 수량 * 가격
