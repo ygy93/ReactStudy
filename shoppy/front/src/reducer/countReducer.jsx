@@ -1,10 +1,18 @@
 import React from "react";
 
-export default function countReducer(count, action){
+export default function countReducer(state, action){
+  const tot = state.total;
+
   if(action.type === 'plus'){
-    return count + action.number;
+    return { 
+      count : state.count + action.number,
+      total : tot + (state.count + action.number) 
+    };
   } else if(action.type === 'minus'){
-    return count - action.number;
+    return { 
+      count : state.count - action.number, 
+      total : tot - state.count
+    };
   } else if(action.type === 'reset'){
     return 0;
   }
