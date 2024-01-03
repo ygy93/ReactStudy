@@ -17,10 +17,14 @@ import { CookiesProvider } from 'react-cookie';
 import MyCount from './pages/MyCount';
 import MyInfo from './pages/MyInfo';
 import MyCountRedux from './pages/MyCountRedux';
+
 // import { createStore } from 'redux'; // 취소선, deprecated
 import { legacy_createStore as createStore } from 'redux'; // 여기서 활성화 시켰기에 위에 선언한건 주석처리 혹은 삭제해야함
 import { Provider } from 'react-redux';
 import rootReducer from './modules_redux/rootReducer';
+import { applyMiddleware } from 'redux';
+import logger from 'redux-logger'
+import { thunk } from 'redux-thunk'; // 비동기처리 지원 라이브러리
 import reduxCount from './modules_redux/reduxCount';
 // 리덕스에서 store 를 써야하는데 store 가 있는것이 createStore 뿐이라 선언해야함,
 // 고로 위에 디프리케이티드는 무늬만 deprecated 이고 사용하는 것
@@ -28,7 +32,11 @@ import reduxCount from './modules_redux/reduxCount';
 // 사용자가 직접 공부해서 이것을 활성화시키게 만들도록 바이럴 마케팅 느낌
 
 /* store 생성 */
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk)
+  // applyMiddleware(logger)
+);
 console.log(store.getState());
 
 const router = createBrowserRouter([
