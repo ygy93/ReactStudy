@@ -4,16 +4,16 @@ import React, { useState } from "react";
 
 export default function useOrder(){
   const navigate = useNavigate();
-  const [userCartList, setUserCartList] = useState([]);
+  const [cartList, setcartList] = useState([]);
 
   // 주문하기 버튼 이벤트
   const [order, setOrder] = useState([]);
   const handleOrder = () => {
-    // alert(JSON.stringify(userCartList));
-    // ? 실행하려는 기능에 관련된 데이터는 어디있는가? -> userCartList : 정확한 데이터 추가
+    // alert(JSON.stringify(cartList));
+    // ? 실행하려는 기능에 관련된 데이터는 어디있는가? -> cartList : 정확한 데이터 추가
     // 회원id, pid, size, qty, totprice -> JSON 객체로 생성 -> newOrderList
     const newOrderList = []; // new Array()
-    userCartList.map((cart) => {
+    cartList.map((cart) => {
       const orderProduct = {
         id : cart.id, 
         pid : cart.pid,

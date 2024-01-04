@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 export default function useCart(currentPage,userInfo){
-  const [userCartList, setUserCartList] = useState([]);
+  const [cartList, setcartList] = useState([]);
   const [totPrice2, setTotPrice2] = useState(0);
   const [totDeliPrice, setTotDeliPrice] = useState(0);
   const [totOrderPrice2, setTotOrderPrice2] = useState(0);
@@ -29,7 +29,7 @@ export default function useCart(currentPage,userInfo){
     // .get(`http://localhost:8000/carts/${userInfo.id}`)
     .get(`http://localhost:8000/carts/${userInfo.id}/${startIndex}/${endIndex}`)
     .then(data => {
-      setUserCartList(data.data)
+      setcartList(data.data)
 
       const rows = data.data[0];
       (rows === undefined) ? setTotalCount(0) : setTotalCount(data.data[0].cnt);
@@ -47,6 +47,6 @@ export default function useCart(currentPage,userInfo){
     .catch(err => console.log(err))
   },[currentPage]) // 체크박스 눌렀을때 다시 호출했던 방법을 응용
 
-  return [userCartList, totalCount, pageSize, totPrice2, totOrderPrice2, totDeliPrice]
+  return [cartList, totalCount, pageSize, totPrice2, totOrderPrice2, totDeliPrice]
 
 }
