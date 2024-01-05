@@ -19,5 +19,5 @@ export default function useUpdateQty(){
     // }
   }
   
-  return [updateCartItemQty]
+  return { updateCartItemQty }
 }

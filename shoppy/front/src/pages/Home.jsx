@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Product from "../components/Product";
 
 export default function Home(){
-  const [productList, setProductList] = useState([])
-  useEffect(() => {
-    axios
-    .get('http://localhost:8000/products/')
-    .then(data => 
-      setProductList(data.data)
-    )
-  },[])
+  // const [productList, setProductList] = useState([])
+  // useEffect(() => {
+  //   axios
+  //   .get('http://localhost:8000/products/')
+  //   .then(data => 
+  //     setProductList(data.data)
+  //   )
+  // },[])
 
   return(
     <div className="Home">
@@ -23,20 +24,7 @@ export default function Home(){
           </div>
         </div>
         <div className="productList">
-          <ul>
-          {
-            productList.map((list,i) => {
-                // console.log(list.image);
-                return <li key={i}>
-                  <Link to = {`/products/${list.pid}`}>
-                    <span>No. {list.pid}</span>
-                    <img src={`http://127.0.0.1:8000/${list.image}`} alt="" />
-                  </Link>
-                </li>
-              }
-            )
-          }
-        </ul>
+          <Product />
         </div>
       </div>
     </div>

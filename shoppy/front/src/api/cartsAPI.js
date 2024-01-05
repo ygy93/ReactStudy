@@ -1,7 +1,10 @@
 import axios from 'axios';
+import { cartListSliceAction } from './../modules_redux/reduxCartList';
 
 /* 장바구니 리스트 */
 export const cartListFetchData = ({userInfo, currentPage}) => {
+  console.log(`currentPage ---> ${currentPage}`);
+
   let startIndex = 0;
   let endIndex = 0;
   const pageSize = 3;
@@ -24,18 +27,19 @@ export const cartListFetchData = ({userInfo, currentPage}) => {
       totalPrice = result.data[0].totalprice;
     }
     
-    dispatch({
-      type : "FETCH_DATA_SUCCESS",
-      cartList : cartList,
-      totalCount : totalCount,
-      totalPrice : totalPrice,
-      pageSize : pageSize
-    });
+    dispatch(cartListSliceAction.getFetchDataList({cartList, totalCount, totalPrice, pageSize}))
+    // dispatch({
+    //   type : "FETCH_DATA_SUCCESS",
+    //   cartList : cartList,
+    //   totalCount : totalCount,
+    //   totalPrice : totalPrice,
+    //   pageSize : pageSize
+    // });
   }
 }
 
 /* 장바구니 수량 */
-export const cartQtyUpdate = ({userInfo, cid, checkFlag}) => {
+export const cartQtyUpdate = ({userInfo, cid, checkFlag, price}) => {
 
   return async(dispatch) => {
     if(checkFlag !== null){
@@ -45,10 +49,29 @@ export const cartQtyUpdate = ({userInfo, cid, checkFlag}) => {
         console.log('수량업데이트 성공')
         dispatch({
           type : "UPDATE_SUCCESS",
-
+          qtyUpdateFlag : true
         })
       })
       .catch(err => console.log('수량업데이트 실패'))
     }
+  }
+}
+
+
+/** 장바구니 삭제버튼  */
+export const cartItemDelete = ({userInfo, cid}) => {
+  console.log(`delete--->> ${userInfo.id}, ${cid}`);
+
+  return  async (dispatch) => {  
+      await axios.get(`http://localhost:8000/carts/${userInfo.id}/${cid}`)
+      .then((result) => {
+          console.log(':: delete success!')
+
+          dispatch({
+            type: "DELETE_SUCCESS",
+            deleteFlag: true
+          });
+      })
+      .catch((error) => console.log(':: delete error!'));  
   }
 }

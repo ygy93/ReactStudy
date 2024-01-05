@@ -4,7 +4,7 @@ import countReducer from './../reducer/countReducer';
 export default function CountItem(props){
   // const [count, setCount] = useState(0);
   const [state, countDispatch] = useReducer(countReducer, {count : 0, total : 0})
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState(1);
 
   props.getCount({total : state.total})
 

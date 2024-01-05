@@ -1,5 +1,6 @@
-const init = () => {
-  return { count : 0, total : 0 };
+const init = {
+  count:0, 
+  total:0,
 }
 
 export default function reduxCount(state=init, action){
@@ -16,7 +17,10 @@ export default function reduxCount(state=init, action){
       total : tot - state.count
     };
   } else if(action.type === 'reset'){
-    return 0;
+    return {
+      count: 0, 
+      total: 0
+    };
   } else {
     return {
       count : 0,

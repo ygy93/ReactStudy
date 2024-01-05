@@ -14,7 +14,7 @@ export async function getAllProducts(req, res){
 
 
 export async function getProduct(req, res){
-  const pid = req.params.pid;
+  const { pid } = req.params;
   const result = await productsRepository.getProduct(pid);
 
   res.json(result);

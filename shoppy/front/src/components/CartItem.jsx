@@ -7,8 +7,8 @@ import { useDispatch } from 'react-redux';
 // import { cartQtyUpdate } from "../modules_redux/reduxAxios";
 import { cartQtyUpdate } from "../api/cartsAPI.js";
 
-export default function CartItem({cartList, userInfo}){
-  const [number, setNumber] = useState(cartList.qty); // 숫자가 변해야하는데 절대값 const 로 주면 변하질않아 let 으로 변수 선언
+export default function CartItem({cart, userInfo}){
+  const [number, setNumber] = useState(cart.qty); // 숫자가 변해야하는데 절대값 const 로 주면 변하질않아 let 으로 변수 선언
   const [cid, setCid] = useState(0);
   const [checkFlag, setCheckFlag] = useState(null);
   const [price, setPrice] = useState(0);
@@ -34,9 +34,9 @@ export default function CartItem({cartList, userInfo}){
       alert('수량은 최소 1개 이상 입니다.');
     } else {
       setNumber(number + 1)
-      setCid(cartList.cid);
+      setCid(cart.cid);
       setCheckFlag('minus');
-      setPrice(cartList.price);
+      setPrice(cart.price);
     }
   }
   const handleMinus = (e) => {
@@ -44,9 +44,9 @@ export default function CartItem({cartList, userInfo}){
       alert('수량은 최대 10개 이하 입니다.');
     } else {
       setNumber(number - 1)
-      setCid(cartList.cid);
+      setCid(cart.cid);
       setCheckFlag('minus');
-      setPrice(cartList.price);
+      setPrice(cart.price);
     }
   }
 
@@ -63,7 +63,7 @@ export default function CartItem({cartList, userInfo}){
     height:'160px'
   }
 
-  const [totDeliPrice, setTotDeliPrice] = useState(0);
+  // const [totDeliPrice, setTotDeliPrice] = useState(0);
   // const [qty, setQty] = useState(1);
   // const [totPrice, setTotPrice] = useState(0);
   // const [totOrderPrice, setTotOrderPrice] = useState(0);
@@ -92,10 +92,10 @@ export default function CartItem({cartList, userInfo}){
 
   return(
     <tr>
-      <td>No. {cartList.rno}, 상품번호. {cartList.cid}</td>
+      <td>No. {cart.rno}</td>
       <td>
-        <img src={`http://127.0.0.1:8000/${cartList.image}`} style={imgStyle}/>
-        {cartList.name}
+        <img src={`http://127.0.0.1:8000/${cart.image}`} style={imgStyle}/>
+        {cart.name}
       </td>
       {/* <td>
         <select style = {selectStyle}>
@@ -106,9 +106,9 @@ export default function CartItem({cartList, userInfo}){
           <option>5</option>
         </select>
       </td> */}
-      <td>{cartList.size}</td>
-      <td>{cartList.price}</td>
-      <td>{totDeliPrice} 원</td>
+      <td>{cart.size}</td>
+      <td>{cart.price}</td>
+      <td>0 원</td>
       <td>
         {/* <Quantity qty={cartList.qty} price={cartList.price} getQty={getQty} cid={cartList.cid}/> */}
         <p>      
@@ -116,7 +116,7 @@ export default function CartItem({cartList, userInfo}){
           <span>{number}</span>
           <span onClick={handlePlus}>+</span>
         </p>
-        <CartDeleteItem userInfo={userInfo} cid={cartList.cid}/>
+        <CartDeleteItem userInfo={userInfo} cid={cart.cid}/>
       </td>
     </tr>
   );

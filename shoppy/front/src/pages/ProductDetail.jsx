@@ -17,9 +17,18 @@ export default function ProductDetail(){
   const navigate = useNavigate();
   const location = useLocation();
 
+  // 하위(자식) 컴포넌트인 Quantity 의 number 값 가져오기
+  const [qty, setQty] = useState(1);
+  const getQty = (e) => {
+    setQty(e.qty);
+    // alert(`qty --->> ${qty}`);
+  }
+
+  console.log(`pid--->${pid}`);
+
   useEffect(() => {
     axios
-    .get(`http://localhost:8000/products/${pid}`)
+    .get(`http://127.0.0.1:8000/products/${pid}`)
     .then(data => 
       setProduct(data.data)
     )
@@ -76,12 +85,6 @@ export default function ProductDetail(){
     }
   }
 
-  // 하위(자식) 컴포넌트인 Quantity 의 number 값 가져오기
-  const [qty, setQty] = useState(0);
-  const getQty = (e) => {
-    setQty(e.qty);
-    // alert(`qty --->> ${qty}`);
-  }
 
   return(
     <div className="content">

@@ -26,12 +26,14 @@ export default function NewProduct(){
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const formData = new FormData(e.target);
-
     // FormData 를 이용하여 name, value 를얻어올 수 있음
     for(let pair of formData.entries()){
       console.log(`${pair[0]} : ${pair[1]}`);
     }
+
+
+    
+    const formData = new FormData(e.target);
 
     // 또는 FormData 를 직접 객체로 변환할 수도 있음
     const formDataObject = {};

@@ -2,9 +2,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-export default function useOrder(){
+export default function useOrder(cartList){
   const navigate = useNavigate();
-  const [cartList, setcartList] = useState([]);
 
   // 주문하기 버튼 이벤트
   const [order, setOrder] = useState([]);
@@ -12,7 +11,7 @@ export default function useOrder(){
     // alert(JSON.stringify(cartList));
     // ? 실행하려는 기능에 관련된 데이터는 어디있는가? -> cartList : 정확한 데이터 추가
     // 회원id, pid, size, qty, totprice -> JSON 객체로 생성 -> newOrderList
-    const newOrderList = []; // new Array()
+    const newOrderList = new Array(); // new Array()
     cartList.map((cart) => {
       const orderProduct = {
         id : cart.id, 

@@ -25,6 +25,14 @@ export default function useCartDeleteItem(buttonRef, userInfo, cid){
     if(buttonRef && buttonRef.current){
       buttonRef.current.addEventListener('click', handleDelete);
     }
+
+    //클릭이벤트 실행 후 버튼에 삭제이벤트리스너 추가
+    return () => {
+      if(buttonRef && buttonRef.current){
+        buttonRef.current.removeEventListener('click', handleDelete);
+      }
+    }
+
   }, [buttonRef])
 
 }

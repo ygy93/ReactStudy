@@ -32,9 +32,9 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
     // 1. dispatch => API :: Axios 액션 함수 --> src/api/cartsAPI.js
     dispatch(cartListFetchData({userInfo, currentPage}));
     console.log(cartList);
-  }, [currentPage, qtyUpdateFlag, deleteFlag]);
+  }, [currentPage, qtyUpdateFlag, totalPrice]);
 
-
+  const [number, setNumber] = useState('');
 
 
   // const [qty, setQty] = useState(1);
@@ -91,10 +91,10 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
               </thead>
               <tbody>
                 {
-                  cartList && cartList.map((cartList) => 
+                  cartList && cartList.map((cart) => 
                     <CartItem 
-                      key={cartList.cid}
-                      cartList={cartList}
+                      key={cart.cid}
+                      cart={cart}
                       userInfo={userInfo}
                     />
                   )
@@ -105,14 +105,14 @@ export default function MyCart(){/* 페이지 보안을 위해서 주소페이�
             <Pagination className="d-flex justify-content-center" style={selectStyle}
               current={currentPage}
               total={totalCount}
-              pageSize={pageSize}
+              pageSize={number(pageSize)}
               onChange={(page) => setCurrentPage(page)}
             />
 
             <div className="tot_div_style">
-              <label>총 상품가격</label><span className="tot_font_style">{totalPrice.toLocaleString()}</span>
+              <label>총 상품가격</label><span className="tot_font_style">{number(totalPrice).toString()}</span>
               <label> + 총 배송비</label><span className="tot_font_style">{0}원</span>
-              <label> = 총 주문금액</label><span className="tot_order_font_style">{totalPrice.toLocaleString()}</span>
+              <label> = 총 주문금액</label><span className="tot_order_font_style">{number(totalPrice).toString()}</span>
             </div>
 
             <div className="orderBtn">

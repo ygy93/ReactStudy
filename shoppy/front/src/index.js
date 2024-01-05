@@ -30,13 +30,24 @@ import reduxCount from './modules_redux/reduxCount';
 // 고로 위에 디프리케이티드는 무늬만 deprecated 이고 사용하는 것
 // deprecated 된 이유는 사용하기 위해 이해하기가 어려워 사용량이 적음,
 // 사용자가 직접 공부해서 이것을 활성화시키게 만들도록 바이럴 마케팅 느낌
+import { configureStore } from '@reduxjs/toolkit';
+import reduxCartList from './modules_redux/reduxCartList';
+import reduxQtyUpdate from './modules_redux/reduxQtyUpdate';
+import reduxCartItemDelete from './modules_redux/reduxCartItemDelete';
+const store = configureStore({
+  reducer : {
+    reduxCartList,
+    reduxQtyUpdate,
+    reduxCartItemDelete
+  }
+});
 
 /* store 생성 */
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
-  // applyMiddleware(logger)
-);
+// const store = createStore(
+//   rootReducer,
+//   applyMiddleware(thunk)
+//   // applyMiddleware(logger)
+// );
 console.log(store.getState());
 
 const router = createBrowserRouter([

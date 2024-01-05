@@ -9,10 +9,6 @@ export default function useCart(currentPage,userInfo){
   const [totalCount, setTotalCount] = useState(0); // 토탈카운트는 장바구니에 쌓이는 개수에 따라 달라지기때문에 db 에서 관리해야해서 초기값 0
   const [pageSize, setPageSize] = useState(3);
 
-  // 총 상품가격 계산함수
-  const setNewTotPrice = (cartList) => {
-    return cartList.reduce((total, cart) => total + (cart.price * cart.qty), 0);
-  }
 
   // 서버에 회원의 장바구니 리스트 가져오기
   useEffect(() => {
@@ -46,6 +42,11 @@ export default function useCart(currentPage,userInfo){
     })
     .catch(err => console.log(err))
   },[currentPage]) // 체크박스 눌렀을때 다시 호출했던 방법을 응용
+
+  // 총 상품가격 계산함수
+  const setNewTotPrice = (cartList) => {
+    return cartList.reduce((total, cart) => total + (cart.price * cart.qty), 0);
+  }
 
   return [cartList, totalCount, pageSize, totPrice2, totOrderPrice2, totDeliPrice]
 
